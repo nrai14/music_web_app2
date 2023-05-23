@@ -40,3 +40,5 @@ artist_id=2
 # Expected response (200 OK)
 (No content)
 
+
+# TEST examples 
