@@ -34,4 +34,15 @@ def test_get_all_artist(db_connection, web_client):
     response = web_client.get('/artists')
     assert response.status_code == 200
     assert response.data.decode("utf-8") == "" \
-        "Artist(1, Pixies, Indie)"
+        "Artist(1, Pixies, Indie)\nArtist(2, ABBA, Pop)\nArtist(3, Taylor Swift, Country)\nArtist(4, Nina Simone, Jazz)" 
+        
+
+def test_create_new_artist(db_connection, web_client):
+    db_connection.seed("seeds/artist_table.sql")
+    post_response = web_client.post('/artists', data={'name': 'Wild Nothing', 'genre': 'Indie'})
+    assert post_response.status_code == 200
+    assert post_response.data.decode("utf-8") == ""
+
+    get_response = web_client.get("/artists")
+    assert get_response.status_code == 200
+    assert get_response.data.decode('utf-')

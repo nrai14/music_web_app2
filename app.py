@@ -1,5 +1,7 @@
 from lib.database_connection import get_flask_database_connection
 from lib.album_repository import AlbumRepository
+from lib.artist_repository import ArtistRepository
+from lib.artist import Artist
 import os
 from flask import Flask, request
 from lib.album import Album
@@ -39,12 +41,24 @@ def post_albums():
 
 #Challenge:
 
-
-
-
-
-
-
+@app.route('/artists', methods=['GET'])
+def get_artists():
+    connection = get_flask_database_connection(app)
+    repository = ArtistRepository(connection)
+    return "\n".join(
+        f"{artist}" for artist in repository.all()
+    )
+    
+@app.route('/artists', methods=['POST'])
+def post_artists():
+    connection = get_flask_database_connection(app)
+    repository = ArtistRepository(connection)
+    artist = Artist(
+        None,
+        request.form['name'],
+        request.form['genre'])
+    repository.create(artist)
+    return '',200
 
 
 
