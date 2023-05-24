@@ -1,15 +1,12 @@
 # Tests for your routes go here
 
-# === Example Code Below ===
-
-"""
-GET /emoji
-"""
+# Example:
 def test_get_emoji(web_client):
     response = web_client.get("/emoji")
     assert response.status_code == 200
     assert response.data.decode("utf-8") == ":)"
 
+#Exercise:
 
 def test_get_all_album(db_connection, web_client):
     db_connection.seed("seeds/album_table.sql")
@@ -27,4 +24,8 @@ def test_post_new_album(db_connection, web_client):
     get_response = web_client.get("/albums")
     assert get_response.status_code == 200
     assert get_response.data.decode('utf-')
-# === End Example Code ===
+
+
+#Challenge:
+#     
+

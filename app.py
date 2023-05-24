@@ -9,15 +9,13 @@ app = Flask(__name__)
 
 # == Your Routes Here ==
 
-# == Example Code Below ==
+#Example:
 
-# GET /emoji
-# Returns a emojiy face
-# Try it:
-#   ; curl http://localhost:5000/emoji
 @app.route('/emoji', methods=['GET'])
 def get_emoji():
     return ":)"
+
+#Exercise:
 
 @app.route('/albums', methods=['GET'])
 def get_albums():
@@ -38,6 +36,20 @@ def post_albums():
         request.form['artist_id'])
     repository.create(album)
     return '',200
+
+#Challenge:
+
+
+
+
+
+
+
+
+
+
+
+
 
 # This imports some more example routes for you to see how they work
 # You can delete these lines if you don't need them.
