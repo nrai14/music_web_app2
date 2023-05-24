@@ -29,3 +29,9 @@ def test_post_new_album(db_connection, web_client):
 #Challenge:
 #     
 
+def test_get_all_artist(db_connection, web_client):
+    db_connection.seed("seeds/artist_table.sql")
+    response = web_client.get('/artists')
+    assert response.status_code == 200
+    assert response.data.decode("utf-8") == "" \
+        "Artist(1, Pixies, Indie)"
